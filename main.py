@@ -1,1 +1,93 @@
+#Braden Leach
+#April 22 2025
+#Pygame Snake Game
+
+# -- Imports -- # 
+import pygame 
+import random 
+import sys
+from pygame.locals import *
+
+# -- Intilizers -- #
+pygame.init()
+pygame.mixer.init()
+
+# -- Window Parameters -- # 
+SCREEN_HEIGHT = 800
+SCREEN_WIDTH = 600
+TITLE = "Snake Game"
+
+# -- Create Game Window -- # 
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption(TITLE)
+
+# -- Game Variables and Constants -- # 
+CELL_SIZE = 10 
+direction = 1 # - 1 is up, 2 is right, 3 is down, 4 is left
+update_snake = 0 
+score = 0 # - Init Score
+
+# -- Base Snake -- #
+snake_pos = [[int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2)]] # - Snake Head
+snake_pos.append([int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE]) # - Body Segment
+snake_pos.append([int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE * 2]) # - Body Segment
+snake_pos.append([int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE * 3]) # - Body Segment
+
+# -- Constant Colors -- #
+BG = (255, 200, 150)
+RED = (255, 0, 0)
+BLACK = (0, 0, 0)
+BODY_INNER = (50, 175, 25)
+BODY_OUTER = (10, 100, 200)
+APPLE_COLOR = (255, 0, 0)
+
+# -- Define Apple Position -- # 
+apple_pos = [random.randint(0, SCREEN_WIDTH // CELL_SIZE - 1) * CELL_SIZE, random.randint(0, SCREEN_HEIGHT // CELL_SIZE - 1) * CELL_SIZE]
+
+# -- Font for Score -- # 
+font = pygame.font.SysFont(None, 35)
+
+# -- Load and Play Background Music -- # 
+pygame.mixer.music.load('') # - Loads Music
+pygame.mixer.music.set_volume(0.5) # - Set volume to 50%
+pygame.mixer.music.play(-1) # - Plays Music in Loop
+
+
+# -- Draw Screen Function -- #
+def draw_screen(): 
+    screen.fill(BG)
+
+
+# -- Draw Apple Function -- # 
+def draw_apple(): 
+    pygame.draw.rect(screen, APPLE_COLOR, (apple_pos[0], apple_pos[1], CELL_SIZE, CELL_SIZE))
+
+
+# -- Draw Score Function -- # 
+def draw_score():
+    score_text = font.render(f'Score: {score}', True, BLACK)
+    screen.blit(score_text, [10, 10])
+
+running = True 
+while running:
+    draw_screen()
+    draw_apple()
+    draw_score()
+
+    # -- Loop Through Events -- # 
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP and direction != 3: # - Up
+                direction = 1
+            elif event.key == pygame.K_RIGHT and direction != 4: # - Right
+                direction = 2
+            elif event.key == pygame.K_DOWN and direction != 1: # - Down
+                direction = 3
+            elif event.key == pygame.K_LEFT and direction != 2: # - Left 
+                direction = 4
+
+
+
 
