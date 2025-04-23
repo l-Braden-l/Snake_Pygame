@@ -27,10 +27,14 @@ update_snake = 0
 score = 0 # - Init Score
 
 # -- Base Snake -- #
-snake_pos = [[int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2)]] # - Snake Head
-snake_pos.append([int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE]) # - Body Segment
-snake_pos.append([int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE * 2]) # - Body Segment
-snake_pos.append([int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE * 3]) # - Body Segment
+snake_pos = [[int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2)],
+             [int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE],
+             [int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE * 2], 
+             [int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE * 3]
+             
+             
+             
+             ] # - Snake Head
 
 # -- Constant Colors -- #
 BG = (255, 200, 150)
