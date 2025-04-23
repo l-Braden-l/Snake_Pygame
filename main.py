@@ -27,14 +27,10 @@ update_snake = 0
 score = 0 # - Init Score
 
 # -- Base Snake -- #
-snake_pos = [[int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2)],
-             [int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE],
-             [int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE * 2], 
-             [int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE * 3]
-             
-             
-             
-             ] # - Snake Head
+snake_pos = [[int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2)]] # - Snake Head
+snake_pos.append([int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE]) # - Body Segment
+snake_pos.append([int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE * 2]) # - Body Segment
+snake_pos.append([int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2) + CELL_SIZE * 3]) # - Body Segment
 
 # -- Constant Colors -- #
 BG = (255, 200, 150)
@@ -70,8 +66,6 @@ def draw_apple():
 def draw_score():
     score_text = font.render(f'Score: {score}', True, BLACK)
     screen.blit(score_text, [10, 10])
-
-
 
 running = True 
 while running:
