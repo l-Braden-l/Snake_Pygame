@@ -32,12 +32,10 @@ APPLE_COLOR = (255, 0, 0)
 font = pygame.font.SysFont(None, 35)
 
 # Music
-try:
-    pygame.mixer.music.load("C:\\Project-Text-Menu\\mixkit-infected-vibes-157.mp3")
-    pygame.mixer.music.set_volume(0.5)
-    pygame.mixer.music.play(-1)
-except:
-    print("Music file not found. Continuing without sound.")
+pygame.mixer.music.load("C:\\Project-Text-Menu\\mixkit-infected-vibes-157.mp3")
+pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.play(-1)
+
 
 # Snake Initial State
 snake_pos = [
@@ -78,6 +76,7 @@ def draw_snake():
 clock = pygame.time.Clock()
 running = True
 tick_count = 0
+
 
 while running:
     draw_screen()
@@ -137,3 +136,4 @@ while running:
 # Quit
 pygame.quit()
 sys.exit()
+
