@@ -6,7 +6,6 @@
 import pygame 
 import random 
 import sys
-from pygame.locals import *
 
 # -- Intilizers -- #
 pygame.init()
@@ -68,8 +67,11 @@ def draw_score():
     score_text = font.render(f'Score: {score}', True, BLACK)
     screen.blit(score_text, [10, 10])
 
+
+
 running = True 
 while running:
+    clock = pygame.time.Clock()
     draw_screen()
     draw_apple()
     draw_score()
@@ -100,7 +102,7 @@ while running:
             head_x += CELL_SIZE
         elif direction == 3: # - Down
             head_y += CELL_SIZE
-        elif direction == 2: # - Left  
+        elif direction == 4: # - Left  
             head_x -= CELL_SIZE
 
         # -- Update Snake Position -- # 
@@ -109,7 +111,7 @@ while running:
 
         # -- Check For Collision (Apple) -- # 
         if snake_pos[0] == apple_pos: 
-            apple_pos[random.randint(0, SCREEN_WIDTH // CELL_SIZE - 1) * CELL_SIZE, random.randint(0, SCREEN_HEIGHT // CELL_SIZE - 1)]
+            apple_pos = [random.randint(0, SCREEN_WIDTH // CELL_SIZE - 1) * CELL_SIZE, random.randint(0, SCREEN_HEIGHT // CELL_SIZE - 1)]
             snake_pos.append(snake_pos[-1]) # -  Add New Segment to Snake 
             score += 1  # - Increase Score When Apple Eaten 
         
@@ -127,14 +129,14 @@ while running:
                 pygame.draw.rect(screen, BODY_OUTER, (segment[0], segment[1], CELL_SIZE, CELL_SIZE))
                 pygame.draw.rect(screen, BODY_INNER, (segment[0] + 1, segment[1] + 1, CELL_SIZE - 2, CELL_SIZE - 2))
 
-        # -- Update Display -- # 
-        pygame.display.flip()
+    # -- Update Display -- # 
+       
+    pygame.display.flip()
 
-        update_snake += 1 
+    update_snake += 1 
+    clock.tick(60)  # Limit to 60 FPS
 
+    
 # -- Exit Pygame -- # 
 pygame.quit()
 sys.exit()
-
-        
-        
