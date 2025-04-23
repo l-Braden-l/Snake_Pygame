@@ -13,7 +13,7 @@ pygame.mixer.init()
 # Window Parameters
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-CELL_SIZE = 10
+CELL_SIZE = 20
 TITLE = "Snake Game"
 
 # Create window
